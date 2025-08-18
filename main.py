@@ -7,6 +7,7 @@ def download_audio(url: str, output_dir: str = "./downloads"):
     try:
         cmd = [
             "yt-dlp",
+            "--no-overwrites",
             "-x",
             "--audio-format",
             "mp3",
@@ -15,7 +16,7 @@ def download_audio(url: str, output_dir: str = "./downloads"):
             url,
         ]
 
-        subprocess.run(cmd, check=True)
+        subprocess.run(cmd)
         print(f"Download complete. Files saved in: {output_dir}")
 
     except subprocess.CalledProcessError as e:
